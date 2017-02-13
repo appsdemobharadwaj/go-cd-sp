@@ -1,0 +1,10 @@
+--- 
+artifacts: 
+  files: 
+    - gen-war/SpConsole.war
+phases: 
+  build: 
+    commands: 
+      - "echo Build started on `date`"
+      - "ant	dist"
+version: 0.1

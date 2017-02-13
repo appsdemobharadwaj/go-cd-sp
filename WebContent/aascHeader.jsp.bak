@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=windows-1252" isELIgnored="false"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page errorPage="aascShipError.jsp" %>
+<html>
+  <head>
+   
+     <link type="text/css" rel="stylesheet" href="jquery-ui.css" />  
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <script type="text/javascript" src="jquery-mini.js"></script>  
+    <title>Ship Header</title>
+    <style type="text/css">
+
+.href {color: #003399}
+
+    </style>
+    <script type="text/javascript" >
+function openNewWindow (URL, windowName, windowOptions)
+      {
+          var window = getWindow (URL, windowName, windowOptions);
+      }
+
+      function getWindow(URL, windowName, windowOptions)
+      {
+        //alert("URL"+URL);
+        //alert("windowName"+windowName);
+        //alert("windowOptions"+windowOptions);
+          var newWindow = open (URL, windowName, windowOptions)
+          newWindow.focus();
+          return window;
+      }
+function changePassword(){
+    tpwindow =  window.open("aascChangePassword.jsp","Post",'width=500,height=350,top=100,left=100,scrollbars=yes, resizable=yes');
+    tpwindow.focus();
+    }
+
+function editProfile(){
+tpwindow =  window.open("aascEditUserProfile.jsp","Post",'width=700,height=450,top=100,left=100,scrollbars=yes, resizable=yes');
+    tpwindow.focus();
+}
+ 
+$(function() {
+$(".dropdown").hover(
+function() { $(".submenu").slideToggle(400); },
+function() { $(".submenu").hide(); }
+);
+});
+</script>
+  </head>
+  <body>
+         <img src="images/aasc_logo.png" align="left" alt="" width="202" height="48" onClick=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
+  <table border="0" cellspacing="0" cellpadding="0" align="right">
+    <tr>
+           
+       <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+      <td align="right">
+        <table >
+        <tr align="right">
+        
+             <td colspan="1" width="25%">
+               <s:set name="accessLevel" value="%{#session.accessLevel}" />
+          <div>
+            <s:a href="aascShipIndexPage.jsp">
+              <img src="images/home.png" width="25" height="25" border="0"/>
+            </s:a>
+          </div>
+        </td>
+             <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+         <td colspan="1" width="15%"><div align="center">
+                     <div class="dropdown">
+                        <a class="account" ><img src="images/setting13.png" alt="" width="24" height="24" border="0" /></a>
+
+                            <div class="submenu">
+                                <ul class="root">
+                                    <li ><s:a href="javascript:editProfile();">Edit Profile</s:a></li>
+                                    <li ><s:a href="javascript:changePassword();">Change Password</s:a></li>
+                                    <li ><s:url action="login" id="urlHeader">
+                                        <s:param name="actiontype" value="%{'Logout'}"/>
+                                        </s:url>
+                                        <s:a href="%{urlHeader}" name="#Logout">Sign Out</s:a></li>
+                                     <s:if test="%{#accessLevel == 2 || #accessLevel == 4}">
+                                        <li ><s:a href="javascript: openNewWindow('ShipConsoleClientShippingUser/index.html?loginscreen.html', 'SCHelpWindow', 'WIDTH=700,HEIGHT=500,resizable=yes');">Help</s:a></li>
+                                     </s:if>
+                                     <s:if test="%{#accessLevel == 3}">
+                                        <li ><s:a href="javascript: openNewWindow('ShipConsoleClientAdmin/index.html?loginscreen.html', 'SCHelpWindow', 'WIDTH=700,HEIGHT=500,resizable=yes');">Help</s:a></li>
+                                     </s:if>
+                                     <s:if test="%{#accessLevel == 1}">
+                                        <li ><s:a href="javascript: openNewWindow('ShipConsoleAdmin/index.html?loginscreen.html', 'SCHelpWindow', 'WIDTH=700,HEIGHT=500,resizable=yes');">Help</s:a></li>
+                                     </s:if>
+                                    <s:if test="%{#accessLevel == 5}">
+                                        <li ><s:a href="javascript: openNewWindow('ShipConsoleTracking/index.html?trackingpage.html', 'SCHelpWindow', 'WIDTH=700,HEIGHT=500,resizable=yes');">Help</s:a></li>
+                                    </s:if>
+                                       
+                                </ul>
+                            </div>
+
+                      </div>
+                      </div></td>
+       
+      </tr>
+    </table>
+    </td>
+    </tr>
+    
+      </table></body>
+</html>
