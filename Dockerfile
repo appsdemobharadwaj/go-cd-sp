@@ -1,2 +1,2 @@
 FROM tomcat:latest
-ADD /gen-war/.* /usr/local/tomcat/webapps/
+COPY /gen-war/SpConsole.war /usr/local/tomcat/webapps/
